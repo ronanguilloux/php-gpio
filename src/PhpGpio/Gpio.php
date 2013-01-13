@@ -2,14 +2,37 @@
 
 namespace PhpGpio;
 
+use PhpGpio\Pi;
+
 class Gpio
 {
     // Using BCM pin numbers.
-    private $pins = array(
-        0, 1, 4, 7, 8, 9,
-        10, 11, 14, 15, 17, 18,
-        21, 22, 23, 24, 25
-    );
+    private $pins;
+    private $hackablePins;
+
+    function __construct() {
+        $pi = new Pi;
+       if ($pi->getVersion() < 4) {
+            $this->pins = array(
+                0, 1, 4, 7, 8, 9,
+                10, 11, 14, 15, 17, 18,
+                21, 22, 23, 24, 25
+            );
+            $this->hackablePins = array(
+                4, 17, 18, 21, 22, 23,24, 25
+            );
+       } else {
+            #new gpio layout: different pins
+            $this->pins = array(
+                2, 3, 4, 7, 8, 9,
+                10, 11, 14, 15, 17, 18,
+                22, 23, 24, 25, 27
+            );
+            $this->hackablePins = array(
+                4, 17, 18, 22, 23, 24, 25, 27
+            );
+       }
+    }
 
     /**
      * getHackablePins : the pins you can hack with.
@@ -18,9 +41,8 @@ class Gpio
      */
     public function getHackablePins()
     {
-        return array(
-           4, 17, 18, 21, 22, 23,24, 25
-        );
+
+        return $this->hackablePins;
     }
 
     private $directions = array(

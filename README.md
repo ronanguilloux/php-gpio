@@ -164,6 +164,7 @@ Credits
 
 * Aaron Pearce, for its [forked pickley/PHP-GPIO project](https://github.com/pickley/PHP-GPIO)
 * Ronan Guilloux <ronan.guilloux@gmail.com>
+* Bas Bloemsaat <bas@bloemsaat.com>, Raspberry Pi version dependency
 * [All contributors](https://github.com/ronanguilloux/php-gpio/contributors)
 
 
