@@ -206,6 +206,7 @@ class Gpio implements GpioInterface
      * Check if pin is exported
      *
      * @access public
+     * @param  int, $pinNo
      * @return boolean
      */
     public function isExported($pinNo)
@@ -221,6 +222,7 @@ class Gpio implements GpioInterface
      * get the pin's current direction
      *
      * @access public
+     * @param  int, $pinNo
      * @return false|string string pin's direction value or boolean false
      */
     public function currentDirection($pinNo)
@@ -236,6 +238,7 @@ class Gpio implements GpioInterface
      * Check for valid direction, in or out
      *
      * @access    public
+     * @param     string, $direction
      * @exception InvalidArgumentException
      * @return    boolean true
      */
@@ -255,7 +258,8 @@ class Gpio implements GpioInterface
      * Check for valid output value
      *
      * @access    public
-     * @exception InvalidArgumentException
+     * @param     mixed, $output
+     * @exception InvalidArgumentException.
      * @return    boolean true
      */
     public function isValidOutput($output)
@@ -274,6 +278,7 @@ class Gpio implements GpioInterface
      * Check for valid pin value
      *
      * @access    public
+     * @param     int, $pinNo
      * @exception InvalidArgumentException
      * @return    boolean true
      */

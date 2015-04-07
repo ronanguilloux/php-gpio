@@ -97,7 +97,7 @@ class MCP3002 implements SensorInterface {
      *
      * @access public
      * @param  array, $args
-     * @return bool?
+     * @return boolean
      */
     public function write($args = [ ]) {
         return false;
