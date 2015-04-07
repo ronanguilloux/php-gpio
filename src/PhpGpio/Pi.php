@@ -41,7 +41,7 @@ class Pi
      * Get the Cpu temperature
      *
      * @access public
-     * @param  $fahrenheit
+     * @param  $fahrenheit, boolean
      * @return integer.
      */
     public function getCpuTemp($fahrenheit = false)
@@ -60,7 +60,7 @@ class Pi
      * Get the temperature of the Graphical Porcessing Unit.
      *
      * @access public
-     * @param  $fahrenheit
+     * @param  $fahrenheit, boolean
      * @return integer.
      */
     public function getGpuTemp($fahrenheit = false)
