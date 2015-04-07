@@ -17,7 +17,9 @@ class DS18B20 implements SensorInterface
     const BASEPATH = '/sys/bus/w1/devices/28-';
 
     /**
-     *  Get-Accesssor
+     * Get-Accesssor
+     *
+     * @access public
      */
     public function getBus()
     {
@@ -25,7 +27,10 @@ class DS18B20 implements SensorInterface
     }
 
     /**
-     *  Set-Accesssor
+     * Set-Accesssor
+     *
+     * @access public
+     * @param  $value
      */
     public function setBus($value)
     {
@@ -45,6 +50,7 @@ class DS18B20 implements SensorInterface
     /**
      * Setup
      *
+     * @access public
      * @return $this
      */
     public function __construct()
@@ -60,6 +66,7 @@ class DS18B20 implements SensorInterface
      * the directory 28-*** indicates the DS18B20 thermal sensor is wired to the bus
      * (28 is the family ID) and the unique ID is a 12-chars numerical digit
      *
+     * @access public
      * @return string $busPath
      */
     public function guessBus()
@@ -76,6 +83,7 @@ class DS18B20 implements SensorInterface
     /**
      * Read
      *
+     * @access public
      * @param  array $args
      * @return float $value
      */
@@ -94,7 +102,8 @@ class DS18B20 implements SensorInterface
     /**
      * Write
      *
-     * @param array $args
+     * @access public
+     * @param  array $args
      * @return boolean
      */
     public function write($args = array())

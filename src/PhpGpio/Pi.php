@@ -9,8 +9,9 @@ class Pi
      * Get RaspberryPi version
      *
      * A list of Model and Pi Revision & Hardware Revision Code from '/proc/cpuinfo' is here:
-     * @link http://www.raspberrypi-spy.co.uk/2012/09/checking-your-raspberry-pi-board-version/
      *
+     * @access public
+     * @link   http://www.raspberrypi-spy.co.uk/2012/09/checking-your-raspberry-pi-board-version/
      * @return decimal Raspi version
      */
     public function getVersion()
@@ -28,6 +29,7 @@ class Pi
     /**
      * Get the CPu load of the Raspberry.
      *
+     * @access public
      * @return string.
      */
     public function getCpuLoad()
@@ -38,6 +40,8 @@ class Pi
     /**
      * Get the Cpu temperature
      *
+     * @access public
+     * @param  $fahrenheit
      * @return integer.
      */
     public function getCpuTemp($fahrenheit = false)
@@ -55,6 +59,8 @@ class Pi
     /**
      * Get the temperature of the Graphical Porcessing Unit.
      *
+     * @access public
+     * @param  $fahrenheit
      * @return integer.
      */
     public function getGpuTemp($fahrenheit = false)
@@ -72,6 +78,7 @@ class Pi
     /**
      *  Get the frequency of the CPU.
      *
+     * @access public
      * @return integer
      */
     public function getCpuFrequency()

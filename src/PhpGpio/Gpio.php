@@ -9,7 +9,10 @@ class Gpio implements GpioInterface
     private $hackablePins;
 
     /**
-     * @link http://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/
+     * Class constructor
+     *
+     * @access public
+     * @link   http://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/
      */
     public function __construct()
     {
@@ -56,7 +59,9 @@ class Gpio implements GpioInterface
 
     /**
      * getHackablePins : the pins you can hack with.
-     * @link http://elinux.org/RPi_Low-level_peripherals
+     *
+     * @access public
+     * @link   http://elinux.org/RPi_Low-level_peripherals
      * @return integer[]
      */
     public function getHackablePins()
@@ -80,6 +85,7 @@ class Gpio implements GpioInterface
     /**
      * Setup pin, takes pin number and direction (in or out)
      *
+     * @access public
      * @param  int    $pinNo
      * @param  string $direction
      * @return mixed  string GPIO value or boolean false
@@ -112,6 +118,7 @@ class Gpio implements GpioInterface
     /**
      * Get input value
      *
+     * @access public
      * @param  int   $pinNo
      * @return false|string string GPIO value or boolean false
      */
@@ -133,6 +140,7 @@ class Gpio implements GpioInterface
     /**
      * Set output value
      *
+     * @access public
      * @param  int    $pinNo
      * @param  string $value
      * @return mixed  Gpio current instance or boolean false
@@ -159,6 +167,7 @@ class Gpio implements GpioInterface
     /**
      * Unexport Pin
      *
+     * @access public
      * @param  int   $pinNo
      * @return mixed Gpio current instance or boolean false
      */
@@ -180,6 +189,7 @@ class Gpio implements GpioInterface
     /**
      * Unexport all pins
      *
+     * @access public
      * @return Gpio Gpio current instance or boolean false
      */
     public function unexportAll()
@@ -195,6 +205,7 @@ class Gpio implements GpioInterface
     /**
      * Check if pin is exported
      *
+     * @access public
      * @return boolean
      */
     public function isExported($pinNo)
@@ -209,6 +220,7 @@ class Gpio implements GpioInterface
     /**
      * get the pin's current direction
      *
+     * @access public
      * @return false|string string pin's direction value or boolean false
      */
     public function currentDirection($pinNo)
@@ -223,8 +235,9 @@ class Gpio implements GpioInterface
     /**
      * Check for valid direction, in or out
      *
+     * @access    public
      * @exception InvalidArgumentException
-     * @return boolean true
+     * @return    boolean true
      */
     public function isValidDirection($direction)
     {
@@ -241,8 +254,9 @@ class Gpio implements GpioInterface
     /**
      * Check for valid output value
      *
+     * @access    public
      * @exception InvalidArgumentException
-     * @return boolean true
+     * @return    boolean true
      */
     public function isValidOutput($output)
     {
@@ -259,8 +273,9 @@ class Gpio implements GpioInterface
     /**
      * Check for valid pin value
      *
+     * @access    public
      * @exception InvalidArgumentException
-     * @return boolean true
+     * @return    boolean true
      */
     public function isValidPin($pinNo)
     {

@@ -11,7 +11,8 @@ interface SensorInterface
     /**
      * Read
      *
-     * @param array $args
+     * @access public
+     * @param  array $args
      * @return double
      */
     public function read($args = array());
@@ -19,7 +20,8 @@ interface SensorInterface
     /**
      * Write
      *
-     * @param array $args
+     * @access public
+     * @param  array $args
      * @return $this
      */
     public function write($args = array());

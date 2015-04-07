@@ -11,29 +11,34 @@ namespace PhpGpio;
 class GpioDevelop implements GpioInterface
 {
     /**
-     * @var array
+     * @access public
+     * @var    array
      */
     public $pins = array(14, 15, 17, 18);
 
     /**
-     * @var array
+     * @access public
+     * @var    array
      */
     public $hackablePins = array(17, 18);
 
     /**
-     * @var int
+     * @access public
+     * @var    int
      */
     public $inputValue = GpioInterface::IO_VALUE_OFF;
 
     /**
-     * @var string
+     * @access public
+     * @var    string
      */
     public $direction = GpioInterface::DIRECTION_OUT;
 
     /**
      * getHackablePins : the pins you can hack with.
-     * @link http://elinux.org/RPi_Low-level_peripherals
      *
+     * @link   http://elinux.org/RPi_Low-level_peripherals
+     * @access public
      * @return array
      */
     public function getHackablePins()
@@ -44,6 +49,7 @@ class GpioDevelop implements GpioInterface
     /**
      * Setup pin, takes pin number and direction (in or out)
      *
+     * @access public
      * @param  int    $pinNo
      * @param  string $direction
      *
@@ -57,6 +63,7 @@ class GpioDevelop implements GpioInterface
     /**
      * Get input value
      *
+     * @access public
      * @param  int   $pinNo
      *
      * @return int GPIO value or boolean false
@@ -69,6 +76,7 @@ class GpioDevelop implements GpioInterface
     /**
      * Set output value
      *
+     * @access public
      * @param  int    $pinNo
      * @param  string $value
      *
@@ -82,6 +90,7 @@ class GpioDevelop implements GpioInterface
     /**
      * Unexport Pin
      *
+     * @access public
      * @param  int $pinNo
      *
      * @return GpioDevelop or boolean false
@@ -94,6 +103,7 @@ class GpioDevelop implements GpioInterface
     /**
      * Unexport all pins
      *
+     * @access public
      * @return GpioDevelop or boolean false
      */
     public function unexportAll()
@@ -104,7 +114,8 @@ class GpioDevelop implements GpioInterface
     /**
      * Check if pin is exported
      *
-     * @param int $pinNo
+     * @access public
+     * @param  int $pinNo
      *
      * @return boolean
      */
@@ -116,7 +127,8 @@ class GpioDevelop implements GpioInterface
     /**
      * get the pin's current direction
      *
-     * @param int $pinNo
+     * @access public
+     * @param  int $pinNo
      *
      * @return string pin's direction value or boolean false
      */
@@ -128,7 +140,8 @@ class GpioDevelop implements GpioInterface
     /**
      * Check for valid direction, in or out
      *
-     * @param string $direction
+     * @access public
+     * @param  string $direction
      *
      * @return boolean
      */
@@ -140,7 +153,8 @@ class GpioDevelop implements GpioInterface
     /**
      * Check for valid output value
      *
-     * @param mixed $output
+     * @access public
+     * @param  mixed $output
      *
      * @return boolean
      */
@@ -152,7 +166,8 @@ class GpioDevelop implements GpioInterface
     /**
      * Check for valid pin value
      *
-     * @param int $pinNo
+     * @access public
+     * @param  int $pinNo
      *
      * @return boolean
      */
