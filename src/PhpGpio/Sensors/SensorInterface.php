@@ -15,7 +15,7 @@ interface SensorInterface
      * @param  array $args
      * @return double
      */
-    public function read($args = array());
+    public function read($args = [ ]);
 
     /**
      * Write
@@ -24,6 +24,6 @@ interface SensorInterface
      * @param  array $args
      * @return $this
      */
-    public function write($args = array());
+    public function write($args = [ ]);
 
 }

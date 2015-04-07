@@ -18,42 +18,42 @@ class Gpio implements GpioInterface
     {
         $raspi = new Pi;
         if ($raspi->getVersion() < 4) {
-            $this->pins = array(
+            $this->pins = [
                 0, 1, 4, 7, 8, 9,
                 10, 11, 14, 15, 17, 18,
                 21, 22, 23, 24, 25
-            );
-            $this->hackablePins = array(
+            ];
+            $this->hackablePins = [
                 4, 7, 8, 9,
                 10, 11, 17, 18,
                 21, 22, 23, 24, 25
-            );
+            ];
         } else if($raspi->getVersion() < 16) {
             # new GPIO layout (REV2)
-            $this->pins = array(
+            $this->pins = [
                 2, 3, 4, 7, 8, 9,
                 10, 11, 14, 15, 17, 18,
                 22, 23, 24, 25, 27
-            );
-            $this->hackablePins = array(
+            ];
+            $this->hackablePins = [
                 4, 7, 8, 9,
                 10, 11, 17, 18,
                 22, 23, 24, 25, 27
-            );
+            ];
         } else {
             # new GPIO layout (B+)
-            $this->pins = array(
+            $this->pins = [
                 2, 3, 4, 5, 6, 7,
                 8, 9, 10, 11, 12, 13,
                 14, 15, 16, 17, 18, 19,
                 20, 21, 22, 23, 24, 25,
                 26, 27
-            );
-            $this->hackablePins = array(
+            ];
+            $this->hackablePins = [
                 4, 5, 6,
                 12, 13, 16, 17, 18, 19,
                 20, 21, 22, 23, 24, 25, 26, 27
-            );
+            ];
         }
     }
 
@@ -69,18 +69,18 @@ class Gpio implements GpioInterface
         return $this->hackablePins;
     }
 
-    private $directions = array(
+    private $directions = [
         GpioInterface::DIRECTION_IN,
         GpioInterface::DIRECTION_OUT,
-    );
+    ];
 
-    private $outputs = array(
+    private $outputs = [
         GpioInterface::IO_VALUE_ON,
         GpioInterface::IO_VALUE_OFF,
-    );
+    ];
 
     // exported pins for when we unexport all
-    private $exportedPins = array();
+    private $exportedPins = [ ];
 
     /**
      * Setup pin, takes pin number and direction (in or out)
@@ -197,7 +197,7 @@ class Gpio implements GpioInterface
         foreach ($this->exportedPins as $pinNo) {
             file_put_contents(GpioInterface::PATH_UNEXPORT, $pinNo);
         }
-        $this->exportedPins = array();
+        $this->exportedPins = [ ];
 
         return $this;
     }

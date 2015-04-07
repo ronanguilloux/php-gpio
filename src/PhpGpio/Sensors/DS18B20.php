@@ -87,7 +87,7 @@ class DS18B20 implements SensorInterface
      * @param  array $args
      * @return float $value
      */
-    public function read($args = array())
+    public function read($args = [ ])
     {
         if (!is_string($this->bus) || !file_exists($this->bus)) {
             throw new \Exception("No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result");
@@ -106,7 +106,7 @@ class DS18B20 implements SensorInterface
      * @param  array $args
      * @return boolean
      */
-    public function write($args = array())
+    public function write($args = [ ])
     {
         return false;
     }

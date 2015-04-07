@@ -9,14 +9,14 @@ namespace PhpGpio;
  */
 interface GpioInterface
 {
-    const DIRECTION_IN = 'in';
+    const DIRECTION_IN  = 'in';
     const DIRECTION_OUT = 'out';
 
-    const IO_VALUE_ON = 1;
-    const IO_VALUE_OFF = 0;
+    const IO_VALUE_ON   = 1;
+    const IO_VALUE_OFF  = 0;
 
-    const PATH_GPIO = '/sys/class/gpio/gpio';
-    const PATH_EXPORT = '/sys/class/gpio/export';
+    const PATH_GPIO     = '/sys/class/gpio/gpio';
+    const PATH_EXPORT   = '/sys/class/gpio/export';
     const PATH_UNEXPORT = '/sys/class/gpio/unexport';
 
     /**

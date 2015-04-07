@@ -65,7 +65,7 @@ class Pi
      */
     public function getGpuTemp($fahrenheit = false)
     {
-        $gputemp = floatval(str_replace(array('temp=', '\'C'), '', exec('/opt/vc/bin/vcgencmd measure_temp')));
+        $gputemp = floatval(str_replace(['temp=', '\'C'], '', exec('/opt/vc/bin/vcgencmd measure_temp')));
 
 		if($fahrenheit) {
 			$gputemp = 1.8* $gputemp+32;

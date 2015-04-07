@@ -52,9 +52,9 @@ class MCP3002 implements SensorInterface {
      * @param  array $args
      * @return integer
      */
-    public function read($args = array()) {
+    public function read($args = [ ]) {
         $channel = $args['channel'];
-        if (!is_integer($channel) || !in_array($channel, array(0, 1))) {
+        if (!is_integer($channel) || !in_array($channel, [0, 1])) {
             echo $msg = "Only 2 channels are available on a Mcp3002: 0 or 1";
             throw new \InvalidArgumentException($msg);
         }
@@ -99,7 +99,7 @@ class MCP3002 implements SensorInterface {
      * @param  array, $args
      * @return bool?
      */
-    public function write($args = array()) {
+    public function write($args = [ ]) {
         return false;
     }
 }

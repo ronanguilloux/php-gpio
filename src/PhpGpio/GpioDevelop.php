@@ -14,13 +14,13 @@ class GpioDevelop implements GpioInterface
      * @access public
      * @var    array
      */
-    public $pins = array(14, 15, 17, 18);
+    public $pins = [14, 15, 17, 18];
 
     /**
      * @access public
      * @var    array
      */
-    public $hackablePins = array(17, 18);
+    public $hackablePins = [17, 18];
 
     /**
      * @access public
