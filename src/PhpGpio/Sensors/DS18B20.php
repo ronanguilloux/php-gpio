@@ -2,6 +2,9 @@
 
 namespace PhpGpio\Sensors;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler
+
 /*
  * 1-Wire is a device communications bus system designed by Dallas Semiconductor Corp.
  * that provides low-speed data, signaling, and power over a single signal.
@@ -10,11 +13,23 @@ namespace PhpGpio\Sensors;
  * such as digital thermometers and weather instruments.
  * (source : http://en.wikipedia.org/wiki/1-Wire)
  */
+
 class DS18B20 implements SensorInterface
 {
 
     private $bus = null; // ex: '/sys/bus/w1/devices/28-000003ced8f4/w1_slave'
     const BASEPATH = '/sys/bus/w1/devices/28-';
+
+
+    /**
+     * Class Constructor
+     */
+     public function __construct()
+     {
+         // Logger
+         $logger = new Logger('Raspberry Pi');
+         $logger->pushHandler(new StreamHandler('logs/'. date('d-m-Y') .'.log', Logger::WARNING));
+     }
 
     /**
      * Get-Accesssor
@@ -36,11 +51,13 @@ class DS18B20 implements SensorInterface
     {
         // ? is a non empty string, & a valid file path
         if (empty($value) || !is_string($value) || !file_exists($value)) {
+            $logger->addError("$value is not a valid w1 bus path.");
             throw new \InvalidArgumentException("$value is not a valid w1 bus path");
         }
 
         // ? is a regular w1-bus path on a Raspbery ?
         if (!strstr($value, self::BASEPATH)) {
+            $logger->addError("$value does not seem to be a regular w1 bus path");
             throw new \InvalidArgumentException("$value does not seem to be a regular w1 bus path");
         }
 
@@ -90,6 +107,7 @@ class DS18B20 implements SensorInterface
     public function read($args = [ ])
     {
         if (!is_string($this->bus) || !file_exists($this->bus)) {
+            $logger->addError('No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result');
             throw new \Exception("No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result");
         }
         $raw = file_get_contents($this->bus);
