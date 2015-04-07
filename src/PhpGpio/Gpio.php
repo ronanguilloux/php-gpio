@@ -2,6 +2,9 @@
 
 namespace PhpGpio;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class Gpio implements GpioInterface
 {
     // Using BCM pin numbers.
@@ -16,7 +19,13 @@ class Gpio implements GpioInterface
      */
     public function __construct()
     {
+        // Raspberry Pi utils?
         $raspi = new Pi;
+
+        // Logger
+        $logger = new Logger('Raspberry Pi');
+        $logger->pushHandler(new StreamHandler('logs/'. date('d-m-Y') .'.log', Logger::WARNING));
+
         if ($raspi->getVersion() < 4) {
             $this->pins = [
                 0, 1, 4, 7, 8, 9,
@@ -131,6 +140,8 @@ class Gpio implements GpioInterface
             if ($this->currentDirection($pinNo) != "out") {
                 return trim(file_get_contents(GpioInterface::PATH_GPIO.$pinNo.'/value'));
             }
+
+            $logger->addError('Error!' . $this->currentDirection($pinNo) . ' is a wrong direction for this pin!');
             throw new \Exception('Error!' . $this->currentDirection($pinNo) . ' is a wrong direction for this pin!');
         }
 
@@ -157,6 +168,7 @@ class Gpio implements GpioInterface
             if ($this->currentDirection($pinNo) != "in") {
                 file_put_contents(GpioInterface::PATH_GPIO.$pinNo.'/value', $value);
             } else {
+                $logger->addError('Error! Wrong Direction for this pin! Meant to be out while it is ' . $this->currentDirection($pinNo));
                 throw new \Exception('Error! Wrong Direction for this pin! Meant to be out while it is ' . $this->currentDirection($pinNo));
             }
         }
@@ -245,9 +257,11 @@ class Gpio implements GpioInterface
     public function isValidDirection($direction)
     {
         if (!is_string($direction) || empty($direction)) {
+            $logger->addError('Direction "%s" is invalid (string expected).', $direction);
             throw new \InvalidArgumentException(sprintf('Direction "%s" is invalid (string expected).', $direction));
         }
         if (!in_array($direction, $this->directions)) {
+            $logger->addError('Direction "%s" is invalid (unknown direction).', $direction);
             throw new \InvalidArgumentException(sprintf('Direction "%s" is invalid (unknown direction).', $direction));
         }
 
@@ -265,9 +279,11 @@ class Gpio implements GpioInterface
     public function isValidOutput($output)
     {
         if (!is_int($output)) {
+            $logger->addError('Pin value "%s" is invalid (integer expected).', $output);
             throw new \InvalidArgumentException(sprintf('Pin value "%s" is invalid (integer expected).', $output));
         }
         if (!in_array($output, $this->outputs)) {
+            $logger->addError('Output value "%s" is invalid (out of exepected range).', $output);
             throw new \InvalidArgumentException(sprintf('Output value "%s" is invalid (out of exepected range).', $output));
         }
 
@@ -285,9 +301,11 @@ class Gpio implements GpioInterface
     public function isValidPin($pinNo)
     {
         if (!is_int($pinNo)) {
+            $logger->addError('Pin number "%s" is invalid (integer expected).', $pinNo);
             throw new \InvalidArgumentException(sprintf('Pin number "%s" is invalid (integer expected).', $pinNo));
         }
         if (!in_array($pinNo, $this->pins)) {
+            $logger->addError('Pin number "%s" is invalid (out of exepected range).', $pinNo);
             throw new \InvalidArgumentException(sprintf('Pin number "%s" is invalid (out of exepected range).', $pinNo));
         }
 
