@@ -27,6 +27,9 @@ class Camera
     private $command;
     private $output;
 
+    /**
+     * Take a photo with the raspberry.
+     */
     public function getPhoto()
     {
         $this->setCommand(sprintf(
@@ -53,6 +56,7 @@ class Camera
     /**
      * Gets the value of width.
      *
+     * @access public
      * @return mixed
      */
     public function getWidth()
@@ -63,7 +67,8 @@ class Camera
     /**
      * Sets the value of width.
      *
-     * @param mixed $width the width
+     * @access public
+     * @param  mixed $width the width
      *
      * @return self
      */
@@ -76,6 +81,7 @@ class Camera
     /**
      * Gets the value of height.
      *
+     * @access public
      * @return mixed
      */
     public function getHeight()
@@ -86,7 +92,8 @@ class Camera
     /**
      * Sets the value of height.
      *
-     * @param mixed $height the height
+     * @access public
+     * @param  mixed $height the height
      *
      * @return self
      */
@@ -99,6 +106,7 @@ class Camera
     /**
      * Gets the value of quality.
      *
+     * @access public
      * @return mixed
      */
     public function getQuality()
@@ -109,7 +117,8 @@ class Camera
     /**
      * Sets the value of quality.
      *
-     * @param mixed $quality the quality
+     * @access public
+     * @param  mixed $quality the quality
      *
      * @return self
      */
@@ -122,6 +131,7 @@ class Camera
     /**
      * Gets the value of verbose.
      *
+     * @access public
      * @return mixed
      */
     public function getVerbose()
@@ -132,7 +142,8 @@ class Camera
     /**
      * Sets the value of verbose.
      *
-     * @param mixed $verbose the verbose
+     * @access public
+     * @param  mixed $verbose the verbose
      *
      * @return self
      */
@@ -145,6 +156,7 @@ class Camera
     /**
      * Gets the value of timeout.
      *
+     * @access public
      * @return mixed
      */
     public function getTimeout()
@@ -155,7 +167,8 @@ class Camera
     /**
      * Sets the value of timeout.
      *
-     * @param mixed $timeout the timeout
+     * @access public
+     * @param  mixed $timeout the timeout
      *
      * @return self
      */
@@ -167,6 +180,7 @@ class Camera
     /**
      * Gets the value of encoding.
      *
+     * @access public
      * @return mixed
      */
 
@@ -178,7 +192,8 @@ class Camera
     /**
      * Sets the value of encoding.
      *
-     * @param mixed $encoding the encoding
+     * @access public
+     * @param  mixed $encoding the encoding
      *
      * @return self
      */
@@ -191,6 +206,7 @@ class Camera
     /**
      * Gets the value of timelapse.
      *
+     * @access public
      * @return mixed
      */
     public function getTimelapse()
@@ -201,7 +217,8 @@ class Camera
     /**
      * Sets the value of timelapse.
      *
-     * @param mixed $timelapse the timelapse
+     * @access public
+     * @param  mixed $timelapse the timelapse
      *
      * @return self
      */
@@ -214,6 +231,7 @@ class Camera
     /**
      * Gets the value of sharpness.
      *
+     * @access public
      * @return mixed
      */
     public function getSharpness()
@@ -224,7 +242,8 @@ class Camera
     /**
      * Sets the value of sharpness.
      *
-     * @param mixed $sharpness the sharpness
+     * @access public
+     * @param  mixed $sharpness the sharpness
      *
      * @return self
      */
@@ -236,6 +255,7 @@ class Camera
     /**
      * Gets the value of contrast.
      *
+     * @access public
      * @return mixed
      */
     public function getContrast()
@@ -246,7 +266,8 @@ class Camera
     /**
      * Sets the value of contrast.
      *
-     * @param mixed $contrast the contrast
+     * @access public
+     * @param  mixed $contrast the contrast
      *
      * @return self
      */
@@ -259,6 +280,7 @@ class Camera
     /**
      * Gets the value of saturation.
      *
+     * @access public
      * @return mixed
      */
     public function getSaturation()
@@ -269,6 +291,7 @@ class Camera
     /**
      * Sets the value of saturation.
      *
+     * @access public
      * @param mixed $saturation the saturation
      *
      * @return self
@@ -282,6 +305,7 @@ class Camera
     /**
      * Gets the value of ISO.
      *
+     * @access public
      * @return mixed
      */
     public function getISO()
@@ -305,6 +329,7 @@ class Camera
     /**
      * Gets the value of vstab.
      *
+     * @access public
      * @return mixed
      */
     public function getVstab()
@@ -315,7 +340,8 @@ class Camera
     /**
      * Sets the value of vstab.
      *
-     * @param mixed $vstab the vstab
+     * @access public
+     * @param  mixed $vstab the vstab
      *
      * @return self
      */
@@ -328,6 +354,7 @@ class Camera
     /**
      * Gets the value of ev.
      *
+     * @access public
      * @return mixed
      */
     public function getEv()
@@ -338,7 +365,8 @@ class Camera
     /**
      * Sets the value of ev.
      *
-     * @param mixed $ev the ev
+     * @access public
+     * @param  mixed $ev the ev
      *
      * @return self
      */
@@ -351,6 +379,7 @@ class Camera
     /**
      * Gets the value of exposure.
      *
+     * @access public
      * @return mixed
      */
     public function getExposure()
@@ -361,7 +390,8 @@ class Camera
     /**
      * Sets the value of exposure.
      *
-     * @param mixed $exposure the exposure
+     * @access public
+     * @param  mixed $exposure the exposure
      *
      * @return self
      */
@@ -374,6 +404,7 @@ class Camera
     /**
      * Gets the value of awb.
      *
+     * @access public
      * @return mixed
      */
     public function getAwb()
@@ -384,7 +415,8 @@ class Camera
     /**
      * Sets the value of awb.
      *
-     * @param mixed $awb the awb
+     * @access public
+     * @param  mixed $awb the awb
      *
      * @return self
      */
@@ -397,6 +429,7 @@ class Camera
     /**
      * Gets the value of imxfx.
      *
+     * @access public
      * @return mixed
      */
     public function getImxfx()
@@ -407,7 +440,8 @@ class Camera
     /**
      * Sets the value of imxfx.
      *
-     * @param mixed $imxfx the imxfx
+     * @access public
+     * @param  mixed $imxfx the imxfx
      *
      * @return self
      */
@@ -420,6 +454,7 @@ class Camera
     /**
      * Gets the value of colfx.
      *
+     * @access public
      * @return mixed
      */
     public function getColfx()
@@ -430,7 +465,8 @@ class Camera
     /**
      * Sets the value of colfx.
      *
-     * @param mixed $colfx the colfx
+     * @access public
+     * @param  mixed $colfx the colfx
      *
      * @return self
      */
@@ -443,6 +479,7 @@ class Camera
     /**
      * Gets the value of metering.
      *
+     * @access public
      * @return mixed
      */
     public function getMetering()
@@ -453,7 +490,8 @@ class Camera
     /**
      * Sets the value of metering.
      *
-     * @param mixed $metering the metering
+     * @access public
+     * @param  mixed $metering the metering
      *
      * @return self
      */
@@ -466,6 +504,7 @@ class Camera
     /**
      * Gets the value of rotation.
      *
+     * @access public
      * @return mixed
      */
     public function getRotation()
@@ -476,7 +515,8 @@ class Camera
     /**
      * Sets the value of rotation.
      *
-     * @param mixed $rotation the rotation
+     * @access public
+     * @param  mixed $rotation the rotation
      *
      * @return self
      */
@@ -489,6 +529,7 @@ class Camera
     /**
      * Gets the value of hflip.
      *
+     * @access public
      * @return mixed
      */
     public function getHflip()
@@ -499,7 +540,8 @@ class Camera
     /**
      * Sets the value of hflip.
      *
-     * @param mixed $hflip the hflip
+     * @access public
+     * @param  mixed $hflip the hflip
      *
      * @return self
      */
@@ -512,6 +554,7 @@ class Camera
     /**
      * Gets the value of vflip.
      *
+     * @access public
      * @return mixed
      */
     public function getVflip()
@@ -522,7 +565,8 @@ class Camera
     /**
      * Sets the value of vflip.
      *
-     * @param mixed $vflip the vflip
+     * @access public
+     * @param  mixed $vflip the vflip
      *
      * @return self
      */
@@ -535,6 +579,7 @@ class Camera
     /**
      * Gets the value of command.
      *
+     * @access public
      * @return mixed
      */
     public function getCommand()
@@ -545,7 +590,8 @@ class Camera
     /**
      * Sets the value of command.
      *
-     * @param mixed $command the command
+     * @access public
+     * @param  mixed $command the command
      *
      * @return self
      */
@@ -558,6 +604,7 @@ class Camera
     /**
      * Gets the value of output.
      *
+     * @access public
      * @return mixed
      */
     public function getOutput()
@@ -568,7 +615,8 @@ class Camera
     /**
      * Sets the value of output.
      *
-     * @param mixed $output the output
+     * @access public
+     * @param  mixed $output the output
      *
      * @return self
      */
