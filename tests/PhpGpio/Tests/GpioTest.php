@@ -4,9 +4,6 @@ namespace PhpGpio\Tests;
 
 use PhpGpio\Gpio;
 
-/**
- * @author Ronan Guilloux <ronan.guilloux@gmail.com>
- */
 class GpioTest extends \PhpUnit_Framework_TestCase
 {
     private $gpio;
