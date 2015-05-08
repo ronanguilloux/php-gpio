@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class PhpGpio\Sensors\MCP3002</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-PhpGpio.html">
+						PhpGpio<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-PhpGpio.Sensors.html">
+						Sensors					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-PhpGpio.Sensors.DS18B20.html">DS18B20</a></li>
+				<li class="active"><a href="class-PhpGpio.Sensors.MCP3002.html">MCP3002</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-PhpGpio.Sensors.SensorInterface.html">SensorInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-PhpGpio.Sensors.html" title="Summary of PhpGpio\Sensors"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class MCP3002</h1>
+
+
+	<div class="description">
+	<p>The MCP3002 has a 10-bit analog to digital converter (ADC) with a simple to use SPI interface.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>PhpGpio\Sensors\MCP3002</span></b>			
+			 implements 
+				<a href="class-PhpGpio.Sensors.SensorInterface.html"><span>PhpGpio\Sensors\SensorInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-PhpGpio.html">PhpGpio</a>\<a href="namespace-PhpGpio.Sensors.html">Sensors</a><br>
+		
+
+				<b>Author:</b>
+				<a href="&#109;&#97;&#x69;&#x6c;t&#111;&#58;&#x70;&#x61;&#111;&#108;&#111;&#x40;&#x63;&#97;&#115;&#x61;&#x72;&#x69;&#110;&#105;&#x2e;&#x6f;r&#103;">&#x70;&#x61;&#111;&#108;&#111;&#x40;&#x63;&#97;&#115;&#x61;&#x72;&#x69;&#110;&#105;&#x2e;&#x6f;r&#103;</a><br>
+			<b>Located at</b> <a href="source-class-PhpGpio.Sensors.MCP3002.html#5-96" title="Go to source code">PhpGpio/Sensors/MCP3002.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-PhpGpio.Sensors.MCP3002.html#19-44" title="Go to source code">__construct</a>( <span>integer <var>$clockpin</var></span>, <span>integer <var>$mosipin</var></span>, <span>integer <var>$misopin</var></span>, <span>integer <var>$cspin</var></span> )</code>
+
+		<div class="description short">
+			<p>Constructor with the sused GPIOs.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor with the sused GPIOs.</p>
+
+<p>Use:
+$adc = new MCP3002(11, 10, 9, 8);
+$value = adc->read(array('channel' => 0));
+echo $value;</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$clockpin</var></dt>
+					<dd>The clock (CLK) pin (ex. 11)</dd>
+					<dt><var>$mosipin</var></dt>
+					<dd>The Master Out Slave In (MOSI) pin (ex. 10)</dd>
+					<dt><var>$misopin</var></dt>
+					<dd>The Master In Slave Out (MISO) pin (ex. 9)</dd>
+					<dt><var>$cspin</var></dt>
+					<dd>The Chip Select (CSna) pin (ex. 8)</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="read" id="_read">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_read">#</a>
+		<code><a href="source-class-PhpGpio.Sensors.MCP3002.html#46-91" title="Go to source code">read</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Read the specified channel.
+You should specify the channel (0|1) to read with the <tt>channel</tt> argument.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Read the specified channel.
+You should specify the channel (0|1) to read with the <tt>channel</tt> argument.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$args</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-PhpGpio.Sensors.SensorInterface.html#_read">PhpGpio\Sensors\SensorInterface::read()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="write" id="_write">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_write">#</a>
+		<code><a href="source-class-PhpGpio.Sensors.MCP3002.html#93-95" title="Go to source code">write</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>Write</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Write</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$args</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<br>$this
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-PhpGpio.Sensors.SensorInterface.html#_write">PhpGpio\Sensors\SensorInterface::write()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

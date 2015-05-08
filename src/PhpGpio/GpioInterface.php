@@ -9,20 +9,21 @@ namespace PhpGpio;
  */
 interface GpioInterface
 {
-    const DIRECTION_IN = 'in';
+    const DIRECTION_IN  = 'in';
     const DIRECTION_OUT = 'out';
 
-    const IO_VALUE_ON = 1;
-    const IO_VALUE_OFF = 0;
+    const IO_VALUE_ON   = 1;
+    const IO_VALUE_OFF  = 0;
 
-    const PATH_GPIO = '/sys/class/gpio/gpio';
-    const PATH_EXPORT = '/sys/class/gpio/export';
+    const PATH_GPIO     = '/sys/class/gpio/gpio';
+    const PATH_EXPORT   = '/sys/class/gpio/export';
     const PATH_UNEXPORT = '/sys/class/gpio/unexport';
 
     /**
      * getHackablePins : the pins you can hack with.
-     * @link http://elinux.org/RPi_Low-level_peripherals
      *
+     * @access public
+     * @link   http://elinux.org/RPi_Low-level_peripherals
      * @return array
      */
     public function getHackablePins();
@@ -30,6 +31,7 @@ interface GpioInterface
     /**
      * Setup pin, takes pin number and direction (in or out)
      *
+     * @access public
      * @param  int    $pinNo
      * @param  string $direction
      *
@@ -40,6 +42,7 @@ interface GpioInterface
     /**
      * Get input value
      *
+     * @access public
      * @param  int   $pinNo
      *
      * @return integer string GPIO value or boolean false
@@ -49,6 +52,7 @@ interface GpioInterface
     /**
      * Set output value
      *
+     * @access public
      * @param  int    $pinNo
      * @param  string $value
      *
@@ -59,6 +63,7 @@ interface GpioInterface
     /**
      * Unexport Pin
      *
+     * @access public
      * @param  int $pinNo
      *
      * @return GpioDevelop Gpio current instance or boolean false
@@ -68,6 +73,7 @@ interface GpioInterface
     /**
      * Unexport all pins
      *
+     * @access public
      * @return GpioDevelop Gpio current instance or boolean false
      */
     public function unexportAll();
@@ -75,7 +81,8 @@ interface GpioInterface
     /**
      * Check if pin is exported
      *
-     * @param int $pinNo
+     * @access public
+     * @param  int $pinNo
      *
      * @return boolean
      */
@@ -84,7 +91,8 @@ interface GpioInterface
     /**
      * get the pin's current direction
      *
-     * @param int $pinNo
+     * @access public
+     * @param  int $pinNo
      *
      * @return string string pin's direction value or boolean false
      */
@@ -93,7 +101,8 @@ interface GpioInterface
     /**
      * Check for valid direction, in or out
      *
-     * @param string $direction
+     * @access public
+     * @param  string $direction
      *
      * @return boolean
      */
@@ -102,7 +111,8 @@ interface GpioInterface
     /**
      * Check for valid output value
      *
-     * @param mixed $output
+     * @access public
+     * @param  mixed $output
      *
      * @return boolean
      */
@@ -111,9 +121,12 @@ interface GpioInterface
     /**
      * Check for valid pin value
      *
-     * @param int $pinNo
+     * @access public
+     * @param  int $pinNo
      *
      * @return boolean
      */
     public function isValidPin($pinNo);
+
+    public function readValuePin($pinNo);
 }

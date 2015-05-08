@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Interface PhpGpio\GpioInterface</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-PhpGpio.html">
+						PhpGpio<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-PhpGpio.Sensors.html">
+						Sensors					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-PhpGpio.Gpio.html">Gpio</a></li>
+				<li><a href="class-PhpGpio.GpioDevelop.html">GpioDevelop</a></li>
+				<li><a href="class-PhpGpio.Pi.html">Pi</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-PhpGpio.GpioInterface.html">GpioInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-PhpGpio.html" title="Summary of PhpGpio"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface GpioInterface</h1>
+
+
+	<div class="description">
+	<p>Gpio interface</p>
+	</div>
+
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-PhpGpio.Gpio.html">PhpGpio\Gpio</a>, 
+			<a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-PhpGpio.html">PhpGpio</a><br>
+		
+
+				<b>Author:</b>
+				Vaidas Lažauskas <a href="&#x6d;&#97;i&#x6c;&#116;&#111;&#x3a;&#118;&#97;&#x69;&#x64;&#97;&#x73;&#x40;&#110;o&#x74;&#114;&#105;&#x78;&#46;&#108;&#x74;">&#118;&#97;&#x69;&#x64;&#97;&#x73;&#x40;&#110;o&#x74;&#114;&#105;&#x78;&#46;&#108;&#x74;</a><br>
+			<b>Located at</b> <a href="source-class-PhpGpio.GpioInterface.html#5-119" title="Go to source code">PhpGpio/GpioInterface.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getHackablePins" id="_getHackablePins">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHackablePins">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#22-28" title="Go to source code">getHackablePins</a>( )</code>
+
+		<div class="description short">
+			<p>getHackablePins : the pins you can hack with.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>getHackablePins : the pins you can hack with.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://elinux.org/RPi_Low-level_peripherals">http://elinux.org/RPi_Low-level_peripherals</a><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setup" id="_setup">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setup">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#30-38" title="Go to source code">setup</a>( <span>integer <var>$pinNo</var></span>, <span>string <var>$direction</var></span> )</code>
+
+		<div class="description short">
+			<p>Setup pin, takes pin number and direction (in or out)</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Setup pin, takes pin number and direction (in or out)</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+					<dt><var>$direction</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code><br>string GPIO value or boolean false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="input" id="_input">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_input">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#40-47" title="Go to source code">input</a>( <span>integer <var>$pinNo</var></span> )</code>
+
+		<div class="description short">
+			<p>Get input value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get input value</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer<br>string GPIO value or boolean false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="output" id="_output">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_output">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#49-57" title="Go to source code">output</a>( <span>integer <var>$pinNo</var></span>, <span>string <var>$value</var></span> )</code>
+
+		<div class="description short">
+			<p>Set output value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set output value</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+					<dt><var>$value</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code><br>Gpio current instance or boolean false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unexport" id="_unexport">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unexport">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#59-66" title="Go to source code">unexport</a>( <span>integer <var>$pinNo</var></span> )</code>
+
+		<div class="description short">
+			<p>Unexport Pin</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Unexport Pin</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code><br>Gpio current instance or boolean false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unexportAll" id="_unexportAll">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unexportAll">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#68-73" title="Go to source code">unexportAll</a>( )</code>
+
+		<div class="description short">
+			<p>Unexport all pins</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Unexport all pins</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-PhpGpio.GpioDevelop.html">PhpGpio\GpioDevelop</a></code><br>Gpio current instance or boolean false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isExported" id="_isExported">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isExported">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#75-82" title="Go to source code">isExported</a>( <span>integer <var>$pinNo</var></span> )</code>
+
+		<div class="description short">
+			<p>Check if pin is exported</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check if pin is exported</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="currentDirection" id="_currentDirection">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_currentDirection">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#84-91" title="Go to source code">currentDirection</a>( <span>integer <var>$pinNo</var></span> )</code>
+
+		<div class="description short">
+			<p>get the pin's current direction</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>get the pin's current direction</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>string pin's direction value or boolean false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isValidDirection" id="_isValidDirection">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isValidDirection">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#93-100" title="Go to source code">isValidDirection</a>( <span>string <var>$direction</var></span> )</code>
+
+		<div class="description short">
+			<p>Check for valid direction, in or out</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check for valid direction, in or out</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$direction</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isValidOutput" id="_isValidOutput">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isValidOutput">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#102-109" title="Go to source code">isValidOutput</a>( <span>mixed <var>$output</var></span> )</code>
+
+		<div class="description short">
+			<p>Check for valid output value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check for valid output value</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$output</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isValidPin" id="_isValidPin">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isValidPin">#</a>
+		<code><a href="source-class-PhpGpio.GpioInterface.html#111-118" title="Go to source code">isValidPin</a>( <span>integer <var>$pinNo</var></span> )</code>
+
+		<div class="description short">
+			<p>Check for valid pin value</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check for valid pin value</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pinNo</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="DIRECTION_IN" id="DIRECTION_IN">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#12" title="Go to source code"><b>DIRECTION_IN</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DIRECTION_IN" class="anchor">#</a>
+				<code><span class="php-quote">'in'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="DIRECTION_OUT" id="DIRECTION_OUT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#13" title="Go to source code"><b>DIRECTION_OUT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#DIRECTION_OUT" class="anchor">#</a>
+				<code><span class="php-quote">'out'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="IO_VALUE_ON" id="IO_VALUE_ON">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#15" title="Go to source code"><b>IO_VALUE_ON</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#IO_VALUE_ON" class="anchor">#</a>
+				<code><span class="php-num">1</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="IO_VALUE_OFF" id="IO_VALUE_OFF">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#16" title="Go to source code"><b>IO_VALUE_OFF</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#IO_VALUE_OFF" class="anchor">#</a>
+				<code><span class="php-num">0</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATH_GPIO" id="PATH_GPIO">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#18" title="Go to source code"><b>PATH_GPIO</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATH_GPIO" class="anchor">#</a>
+				<code><span class="php-quote">'/sys/class/gpio/gpio'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATH_EXPORT" id="PATH_EXPORT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#19" title="Go to source code"><b>PATH_EXPORT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATH_EXPORT" class="anchor">#</a>
+				<code><span class="php-quote">'/sys/class/gpio/export'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATH_UNEXPORT" id="PATH_UNEXPORT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-PhpGpio.GpioInterface.html#20" title="Go to source code"><b>PATH_UNEXPORT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATH_UNEXPORT" class="anchor">#</a>
+				<code><span class="php-quote">'/sys/class/gpio/unexport'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -2,6 +2,9 @@
 
 namespace PhpGpio\Sensors;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler
+
 /*
  * 1-Wire is a device communications bus system designed by Dallas Semiconductor Corp.
  * that provides low-speed data, signaling, and power over a single signal.
@@ -10,14 +13,28 @@ namespace PhpGpio\Sensors;
  * such as digital thermometers and weather instruments.
  * (source : http://en.wikipedia.org/wiki/1-Wire)
  */
+
 class DS18B20 implements SensorInterface
 {
 
     private $bus = null; // ex: '/sys/bus/w1/devices/28-000003ced8f4/w1_slave'
     const BASEPATH = '/sys/bus/w1/devices/28-';
 
+
     /**
-     *  Get-Accesssor
+     * Class Constructor
+     */
+     public function __construct()
+     {
+         // Logger
+         $logger = new Logger('Raspberry Pi');
+         $logger->pushHandler(new StreamHandler('logs/'. date('d-m-Y') .'.log', Logger::WARNING));
+     }
+
+    /**
+     * Get-Accesssor
+     *
+     * @access public
      */
     public function getBus()
     {
@@ -25,17 +42,22 @@ class DS18B20 implements SensorInterface
     }
 
     /**
-     *  Set-Accesssor
+     * Set-Accesssor
+     *
+     * @access public
+     * @param  $value
      */
     public function setBus($value)
     {
         // ? is a non empty string, & a valid file path
         if (empty($value) || !is_string($value) || !file_exists($value)) {
+            $logger->addError("$value is not a valid w1 bus path.");
             throw new \InvalidArgumentException("$value is not a valid w1 bus path");
         }
 
         // ? is a regular w1-bus path on a Raspbery ?
         if (!strstr($value, self::BASEPATH)) {
+            $logger->addError("$value does not seem to be a regular w1 bus path");
             throw new \InvalidArgumentException("$value does not seem to be a regular w1 bus path");
         }
 
@@ -45,6 +67,7 @@ class DS18B20 implements SensorInterface
     /**
      * Setup
      *
+     * @access public
      * @return $this
      */
     public function __construct()
@@ -60,6 +83,7 @@ class DS18B20 implements SensorInterface
      * the directory 28-*** indicates the DS18B20 thermal sensor is wired to the bus
      * (28 is the family ID) and the unique ID is a 12-chars numerical digit
      *
+     * @access public
      * @return string $busPath
      */
     public function guessBus()
@@ -76,12 +100,14 @@ class DS18B20 implements SensorInterface
     /**
      * Read
      *
+     * @access public
      * @param  array $args
      * @return float $value
      */
-    public function read($args = array())
+    public function read($args = [ ])
     {
         if (!is_string($this->bus) || !file_exists($this->bus)) {
+            $logger->addError('No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result');
             throw new \Exception("No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result");
         }
         $raw = file_get_contents($this->bus);
@@ -94,10 +120,11 @@ class DS18B20 implements SensorInterface
     /**
      * Write
      *
-     * @param array $args
+     * @access public
+     * @param  array $args
      * @return boolean
      */
-    public function write($args = array())
+    public function write($args = [ ])
     {
         return false;
     }
