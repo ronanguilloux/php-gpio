@@ -128,8 +128,9 @@ class Gpio implements GpioInterface
      * Get input value
      *
      * @access public
-     * @param  int   $pinNo
+     * @param  int $pinNo
      * @return false|string string GPIO value or boolean false
+     * @throws \Exception
      */
     public function input($pinNo)
     {
@@ -141,7 +142,7 @@ class Gpio implements GpioInterface
                 return trim(file_get_contents(GpioInterface::PATH_GPIO.$pinNo.'/value'));
             }
 
-            $logger->addError('Error!' . $this->currentDirection($pinNo) . ' is a wrong direction for this pin!');
+            $this->logger->addError('Error!' . $this->currentDirection($pinNo) . ' is a wrong direction for this pin!');
             throw new \Exception('Error!' . $this->currentDirection($pinNo) . ' is a wrong direction for this pin!');
         }
 
@@ -152,9 +153,10 @@ class Gpio implements GpioInterface
      * Set output value
      *
      * @access public
-     * @param  int    $pinNo
+     * @param  int $pinNo
      * @param  string $value
-     * @return mixed  Gpio current instance or boolean false
+     * @return mixed Gpio current instance or boolean false
+     * @throws \Exception
      */
     public function output($pinNo, $value)
     {
@@ -168,7 +170,7 @@ class Gpio implements GpioInterface
             if ($this->currentDirection($pinNo) != "in") {
                 file_put_contents(GpioInterface::PATH_GPIO.$pinNo.'/value', $value);
             } else {
-                $logger->addError('Error! Wrong Direction for this pin! Meant to be out while it is ' . $this->currentDirection($pinNo));
+                $this->logger->addError('Error! Wrong Direction for this pin! Meant to be out while it is ' . $this->currentDirection($pinNo));
                 throw new \Exception('Error! Wrong Direction for this pin! Meant to be out while it is ' . $this->currentDirection($pinNo));
             }
         }
@@ -257,11 +259,11 @@ class Gpio implements GpioInterface
     public function isValidDirection($direction)
     {
         if (!is_string($direction) || empty($direction)) {
-            $logger->addError('Direction "%s" is invalid (string expected).', $direction);
+            $this->logger->addError('Direction "%s" is invalid (string expected).', $direction);
             throw new \InvalidArgumentException(sprintf('Direction "%s" is invalid (string expected).', $direction));
         }
         if (!in_array($direction, $this->directions)) {
-            $logger->addError('Direction "%s" is invalid (unknown direction).', $direction);
+            $this->logger->addError('Direction "%s" is invalid (unknown direction).', $direction);
             throw new \InvalidArgumentException(sprintf('Direction "%s" is invalid (unknown direction).', $direction));
         }
 
@@ -310,5 +312,13 @@ class Gpio implements GpioInterface
         }
 
         return true;
+    }
+
+    public function readValuePin($pinNo) {
+        if (!$this->isValidPin($pinNo)) {
+            return false;
+        }
+
+        return trim(file_get_contents(GpioInterface::PATH_GPIO.$pinNo.'/value'));;
     }
 }
