@@ -98,6 +98,9 @@ class Gpio implements GpioInterface
         // Export pin
         file_put_contents(GpioInterface::PATH_EXPORT, $pinNo);
 
+	// wait until pin is ready
+	while(!is_writable(GpioInterface::PATH_GPIO.$pinNo)) { /* empty */ }
+
         // if valid direction then set direction
         if ($this->isValidDirection($direction)) {
             file_put_contents(GpioInterface::PATH_GPIO.$pinNo.'/direction', $direction);
