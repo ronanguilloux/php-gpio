@@ -170,7 +170,7 @@ class Gpio implements GpioInterface
         if ($this->isExported($pinNo)) {
             file_put_contents(GpioInterface::PATH_UNEXPORT, $pinNo);
             foreach ($this->exportedPins as $key => $value) {
-                if($value == $pinNo) unset($key);
+                if($value == $pinNo) unset($this->exportedPins[$key]);
             }
         }
 
