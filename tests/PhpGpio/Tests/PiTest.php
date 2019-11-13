@@ -34,8 +34,7 @@ class PiTest extends \PhpUnit_Framework_TestCase
         $this->assertPreconditionOrMarkTestSkipped();
         $this->assertTrue($this->pi instanceof Pi);
         $version = $this->pi->getVersion();
-        $this->assertInternalType('integer' , $version);
-
+        $this->assertInternalType('integer', $version);
     }
 
     public function testGetCpuLoad()
@@ -45,7 +44,6 @@ class PiTest extends \PhpUnit_Framework_TestCase
         $result = $this->pi->getCpuLoad();
         $this->assertTrue(is_array($result));
         $this->assertCount(3, $result);
-
     }
 
     public function testGetCpuTemp()
@@ -53,8 +51,7 @@ class PiTest extends \PhpUnit_Framework_TestCase
         $this->assertPreconditionOrMarkTestSkipped();
         $this->assertTrue($this->pi instanceof Pi);
         $result = $this->pi->getCpuTemp();
-        $this->assertInternalType('float' , $result);
-
+        $this->assertInternalType('float', $result);
     }
 
     public function testGetGpuTemp()
@@ -62,8 +59,7 @@ class PiTest extends \PhpUnit_Framework_TestCase
         $this->assertPreconditionOrMarkTestSkipped();
         $this->assertTrue($this->pi instanceof Pi);
         $result = $this->pi->getGpuTemp();
-        $this->assertInternalType('float' , $result);
-
+        $this->assertInternalType('float', $result);
     }
 
     public function testGetCpuFrequence()
@@ -71,8 +67,6 @@ class PiTest extends \PhpUnit_Framework_TestCase
         $this->assertPreconditionOrMarkTestSkipped();
         $this->assertTrue($this->pi instanceof Pi);
         $result = $this->pi->getCpuFrequency();
-        $this->assertInternalType('float' , $result);
-
+        $this->assertInternalType('float', $result);
     }
-
 }

@@ -7,21 +7,11 @@ namespace PhpGpio\Sensors;
  */
 interface SensorInterface
 {
-
     /**
      * Read
      *
      * @param array $args
-     * @return double
+     * @return float
      */
-    public function read($args = array());
-
-    /**
-     * Write
-     *
-     * @param array $args
-     * @return $this
-     */
-    public function write($args = array());
-
+    public function read($args = []): float;
 }

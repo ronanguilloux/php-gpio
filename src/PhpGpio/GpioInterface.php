@@ -25,52 +25,52 @@ interface GpioInterface
      *
      * @return array
      */
-    public function getHackablePins();
+    public function getHackablePins(): array;
 
     /**
      * Setup pin, takes pin number and direction (in or out)
      *
-     * @param  int    $pinNo
-     * @param  string $direction
+     * @param int $pinNo
+     * @param string $direction
      *
      * @return GpioDevelop string GPIO value or boolean false
      */
-    public function setup($pinNo, $direction);
+    public function setup(int $pinNo, string $direction);
 
     /**
      * Get input value
      *
-     * @param  int   $pinNo
+     * @param int $pinNo
      *
-     * @return integer string GPIO value or boolean false
+     * @return string GPIO value
      */
-    public function input($pinNo);
+    public function input(int $pinNo): string;
 
     /**
      * Set output value
      *
-     * @param  int    $pinNo
-     * @param  string $value
+     * @param int $pinNo
+     * @param string $output
      *
      * @return GpioDevelop Gpio current instance or boolean false
      */
-    public function output($pinNo, $value);
+    public function output(int $pinNo, string $output): GpioInterface;
 
     /**
      * Unexport Pin
      *
-     * @param  int $pinNo
+     * @param int $pinNo
      *
      * @return GpioDevelop Gpio current instance or boolean false
      */
-    public function unexport($pinNo);
+    public function unexport(int $pinNo);
 
     /**
      * Unexport all pins
      *
-     * @return GpioDevelop Gpio current instance or boolean false
+     * @return GpioInterface Gpio current instance
      */
-    public function unexportAll();
+    public function unexportAll(): GpioInterface;
 
     /**
      * Check if pin is exported
@@ -79,7 +79,7 @@ interface GpioInterface
      *
      * @return boolean
      */
-    public function isExported($pinNo);
+    public function isExported(int $pinNo);
 
     /**
      * get the pin's current direction
@@ -88,25 +88,23 @@ interface GpioInterface
      *
      * @return string string pin's direction value or boolean false
      */
-    public function currentDirection($pinNo);
+    public function currentDirection(int $pinNo);
 
     /**
      * Check for valid direction, in or out
      *
      * @param string $direction
-     *
-     * @return boolean
      */
-    public function isValidDirection($direction);
+    public function isValidDirection(string $direction);
 
     /**
      * Check for valid output value
      *
-     * @param mixed $output
+     * @param string $output
      *
      * @return boolean
      */
-    public function isValidOutput($output);
+    public function isValidOutputOrException(string $output);
 
     /**
      * Check for valid pin value
@@ -115,5 +113,5 @@ interface GpioInterface
      *
      * @return boolean
      */
-    public function isValidPin($pinNo);
+    public function isValidPinOrException(int $pinNo);
 }

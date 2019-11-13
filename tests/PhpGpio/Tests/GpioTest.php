@@ -10,8 +10,8 @@ use PhpGpio\Gpio;
 class GpioTest extends \PhpUnit_Framework_TestCase
 {
     private $gpio;
-    private $rpi ='raspberrypi';
-    private $hackablePins = array();
+    private $rpi = 'raspberrypi';
+    private $hackablePins = [];
 
     public function setUp()
     {
@@ -21,9 +21,9 @@ class GpioTest extends \PhpUnit_Framework_TestCase
         // but in this test set, the Raspi is wired to a breadboard
         // and the 4th Gpio pin is reserved to read the DS18B20 sensor.
         // Other available gpio pins are connected to LEDs
-        $this->hackablePins = array(
-           17, 18, 21, 22, 23,24, 25
-       );
+        $this->hackablePins = [
+            17, 18, 21, 22, 23, 24, 25
+        ];
     }
 
     /**
@@ -123,5 +123,4 @@ class GpioTest extends \PhpUnit_Framework_TestCase
     {
         $this->gpio->setup(17);
     }
-
 }

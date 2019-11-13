@@ -1,25 +1,55 @@
 {
-    "name": "ronanguilloux/php-gpio",
-    "type": "library",
-    "description": "GPIO-related utils & toolkit PHP library",
-    "keywords": ["GPIO", "hardware", "chipset", "input", "output", "port", "pin", "chip", "sensors", "raspberry", "raspberry pi"],
-    "homepage": "https://github.com/ronanguilloux/php-gpio",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ronan Guilloux",
-            "email": "ronan.guilloux@gmail.com"
-        }
-    ],
-   "require": {
-        "php": ">=5.3.0"
-    },
-   "autoload": {
-        "psr-0": { "PhpGpio": "src/" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
+  "name": "ronanguilloux/php-gpio",
+  "type": "library",
+  "description": "GPIO-related utils & toolkit PHP library",
+  "keywords": [
+    "GPIO",
+    "hardware",
+    "chipset",
+    "input",
+    "output",
+    "port",
+    "pin",
+    "chip",
+    "sensors",
+    "raspberry",
+    "raspberry pi"
+  ],
+  "homepage": "https://github.com/ronanguilloux/php-gpio",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ronan Guilloux",
+      "email": "ronan.guilloux@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0",
+    "phpstan/phpstan": "^0.11",
+    "squizlabs/php_codesniffer": "3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpGpio\\": "src/PhpGpio/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PhpGpio\\Test\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "scripts": {
+    "tests": "phpdbg -qrr vendor/bin/phpunit tests",
+    "phpcs": "phpcs -ns --report=full",
+    "phpcs-fix": "phpcbf src tests src",
+    "phpstan": "phpstan analyse -l 6 --no-progress -n --ansi ./src/"
+  }
 }

@@ -29,7 +29,7 @@ if (!extension_loaded('curl') || !function_exists('curl_init')) {
     die(<<<EOT
 cURL has to be enabled!
 EOT
-);
+    );
 }
 
 if (!($loader = @include __DIR__ . '/../vendor/autoload.php')) {
@@ -42,7 +42,7 @@ $ php composer.phar install --dev
 $ phpunit
 
 EOT
-);
+    );
 }
 
 $loader->add('PhpGpio\Tests', __DIR__);

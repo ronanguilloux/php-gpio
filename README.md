@@ -48,8 +48,8 @@ add appropriate modules from the Linux Kernel:
 
 For *LEDs*, enable the gpio module :
 
-``` bash
-$ sudo modprobe w1-gpio
+```bash
+sudo modprobe w1-gpio
 ```
 
 ([see a complete circuit diagram for a single LED + explanations & schemas here](https://projects.drogon.net/raspberry-pi/gpio-examples/tux-crossing/gpio-examples-1-a-single-led/))
@@ -57,15 +57,15 @@ $ sudo modprobe w1-gpio
 For *sensors*, enable the appropriate sensor.
 By example for a [DS18B20 1-Wire digital temperature sensor](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/overview):
 
-``` bash
-$ sudo modprobe w1-therm
+```bash
+sudo modprobe w1-therm
 ```
 
 ([see the DS18B20 in action on a Raspberry Pi here](https://github.com/ronanguilloux/temperature-pi))
 
 To load such kernel modules automatically at boot time, edit the `/etc/modules` file & add these two lines:
 
-```
+```text
 w1-gpio
 w1-therm
 ```
@@ -78,15 +78,15 @@ The recommended way to install php-gpio is through [composer](http://getcomposer
 
 Just run these three commands to install it
 
-``` bash
-$ sudo apt-get install git
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar create-project --stability='dev' ronanguilloux/php-gpio intoYourPath
+```bash
+sudo apt-get install git
+wget http://getcomposer.org/composer.phar
+php composer.phar create-project --stability='dev' ronanguilloux/php-gpio intoYourPath
 ```
 
 Now you can add the autoloader, and you will have access to the library:
 
-``` php
+```php
 <?php
 
 require 'vendor/autoload.php';
@@ -94,7 +94,7 @@ require 'vendor/autoload.php';
 
 If you don't use neither **Composer** nor a _ClassLoader_ in your application, just require the provided autoloader:
 
-``` php
+```php
 <?php
 
 require_once 'src/autoload.php';
@@ -107,7 +107,7 @@ API Usage
 The API usage requires sudo permissions.  
 To respect such permissions needs (say, for any web-related usage), see blinker file and the explanations below.
 
-``` php
+```php
 <?php
 
 require 'vendor/autoload.php';
@@ -167,8 +167,8 @@ This is the regular linux-file-permission-system way to do such things, not a du
 
 Edit your `/etc/sudoers` file:
 
-``` bash
-$ sudo visudo
+```bash
+sudo visudo
 ```
 
 Then add this two lines in your `/etc/sudoers` file :
@@ -183,7 +183,7 @@ The blinker file provided now has the sufficient permissions & is ready to use t
 
 You can test the blinker file solution with the `blinkerTest.php` file provided here:
 
-``` php
+```php
 <?php
 
 # blinkTester.php
@@ -194,8 +194,8 @@ $result = exec('sudo -t /usr/bin/php ./blinker 17 20000');
 
 Test your blinker:
 
-``` bash
-$ php blinkTester.php
+```bash
+php blinkTester.php
 ```
 
 
@@ -214,16 +214,16 @@ Running the full PhpUnit tests set over php-gpio requires a sudoable user, becau
 Instead of installing phpunit, you can just download & use the single PhpUnit package.
 This can be easily done using `cURL`, to get the standalone PhpUnit's phar file:
 
-``` bash
-$ wget http://pear.phpunit.de/get/phpunit.phar
-$ chmod +x phpunit.phar
+```bash
+wget http://pear.phpunit.de/get/phpunit.phar
+chmod +x phpunit.phar
 ```
-``` bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar install --dev
+```bash
+wget http://getcomposer.org/composer.phar
+php composer.phar install --dev
 ```
-``` bash
-$ sudo /usr/bin/php phpunit.phar
+```bash
+sudo /usr/bin/php phpunit.phar
 ```
 
 
@@ -232,6 +232,11 @@ PHP Quality
 
 For [PHP quality fans](http://phpqatools.org), and for my self coding improvement, I wrote a little script available in the ./bin directory I launch to check my PHP code: It produces various stats & metrics & improvements tips on the code.
 
+Run tests
+
+```bash
+composer run tests
+```
 
 Credits
 -------

@@ -1,0 +1,5 @@
+parameters:
+    universalObjectCratesClasses:
+        - Zend\Stdlib\Parameters
+    includes:
+        - vendor/jangregor/phpstan-prophecy/src/extension.neon
