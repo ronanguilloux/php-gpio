@@ -186,7 +186,9 @@ class Gpio implements GpioInterface
         $this->isValidPinOrException($pinNo);
         if ($this->isExported($pinNo)) {
             if ($this->currentDirection($pinNo) != "out") {
-                return trim($this->getGpioContent($pinNo . '/value'));
+                return trim(
+                    FileGetContentsService::get(GpioInterface::PATH_GPIO . $pinNo . '/value')
+                );
             }
             throw new Exception('Error!' . $this->currentDirection($pinNo) . ' is a wrong direction for this pin!');
         }
@@ -201,7 +203,7 @@ class Gpio implements GpioInterface
      */
     public function getGpioContent(string $subpath)
     {
-        file_get_contents(GpioInterface::PATH_GPIO . $subpath);
+        FileGetContentsService::get(GpioInterface::PATH_GPIO . $subpath);
     }
 
     /**
@@ -221,10 +223,10 @@ class Gpio implements GpioInterface
      *
      * @param int $pinNo
      * @param string $output
-     * @return self  Gpio current instance or boolean false
+     * @return GpioInterface current instance
      * @throws Exception
      */
-    public function output(int $pinNo, string $output): self
+    public function output(int $pinNo, string $output): GpioInterface
     {
         $this->isValidPinOrException($pinNo);
         $this->isValidOutputOrException($output);
@@ -244,12 +246,10 @@ class Gpio implements GpioInterface
      * Check for valid output value
      *
      * @exception InvalidArgumentException
+     * @param string $output
      */
     public function isValidOutputOrException(string $output)
     {
-        if (!is_int($output)) {
-            throw new InvalidArgumentException(sprintf('Pin value "%s" is invalid (integer expected).', $output));
-        }
         if (!in_array($output, $this->outputs)) {
             throw new InvalidArgumentException(sprintf('Output value "%s" is invalid (out of exepected range).', $output));
         }
@@ -258,9 +258,9 @@ class Gpio implements GpioInterface
     /**
      * Unexport all pins
      *
-     * @return Gpio Gpio current instance or boolean false
+     * @return GpioInterface Gpio current instance or boolean false
      */
-    public function unexportAll()
+    public function unexportAll(): GpioInterface
     {
         foreach ($this->exportedPins as $pinNo) {
             file_put_contents(GpioInterface::PATH_UNEXPORT, $pinNo);

@@ -13,6 +13,7 @@ namespace PhpGpio\Sensors;
 
 use Exception;
 use InvalidArgumentException;
+use PhpGpio\FileGetContentsService;
 
 class DS18B20 implements SensorInterface
 {
@@ -83,10 +84,7 @@ class DS18B20 implements SensorInterface
         if (!is_string($this->bus) || !file_exists($this->bus)) {
             throw new Exception("No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result");
         }
-        $raw = file_get_contents($this->bus);
-        if ($raw === false) {
-            throw new Exception('Could not read bus');
-        }
+        $raw = FileGetContentsService::get($this->bus);
         $raw = str_replace("\n", '', $raw);
         $boom = explode('t=', $raw);
 

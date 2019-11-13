@@ -7,7 +7,6 @@ namespace PhpGpio\Sensors;
  */
 interface SensorInterface
 {
-
     /**
      * Read
      *

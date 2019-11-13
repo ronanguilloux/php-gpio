@@ -14,10 +14,16 @@ class Pi
      */
     public function getVersion(): int
     {
-        $cpuinfo = preg_split("/\n/", file_get_contents('/proc/cpuinfo'));
-        foreach ($cpuinfo as $line) {
+        $result = FileGetContentsService::get('/proc/cpuinfo');
+        $cpuInfo = preg_split("/\n/", $result);
+
+        if (!is_array($cpuInfo)) {
+            return 0;
+        }
+
+        foreach ($cpuInfo as $line) {
             if (preg_match('/Revision\s*:\s*([^\s]*)\s*/', $line, $matches)) {
-                return hexdec($matches[1]);
+                return (int)hexdec($matches[1]);
             }
         }
 

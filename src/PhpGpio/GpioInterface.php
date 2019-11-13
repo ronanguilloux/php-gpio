@@ -54,7 +54,7 @@ interface GpioInterface
      *
      * @return GpioDevelop Gpio current instance or boolean false
      */
-    public function output(int $pinNo, string $output);
+    public function output(int $pinNo, string $output): GpioInterface;
 
     /**
      * Unexport Pin
@@ -68,9 +68,9 @@ interface GpioInterface
     /**
      * Unexport all pins
      *
-     * @return GpioDevelop Gpio current instance or boolean false
+     * @return GpioInterface Gpio current instance
      */
-    public function unexportAll();
+    public function unexportAll(): GpioInterface;
 
     /**
      * Check if pin is exported

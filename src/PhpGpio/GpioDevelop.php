@@ -72,9 +72,9 @@ class GpioDevelop implements GpioInterface
      * @param int $pinNo
      * @param string $output
      *
-     * @return GpioDevelop or boolean false
+     * @return GpioInterface GpioDevelop
      */
-    public function output(int $pinNo, string $output)
+    public function output(int $pinNo, string $output): GpioInterface
     {
         return $this;
     }
@@ -94,9 +94,9 @@ class GpioDevelop implements GpioInterface
     /**
      * Unexport all pins
      *
-     * @return GpioDevelop or boolean false
+     * @return GpioInterface
      */
-    public function unexportAll()
+    public function unexportAll(): GpioInterface
     {
         return $this;
     }
@@ -140,7 +140,7 @@ class GpioDevelop implements GpioInterface
     /**
      * Check for valid output value
      *
-     * @param mixed $output
+     * @param string $output
      *
      * @return boolean
      */
@@ -156,7 +156,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return boolean
      */
-    public function isValidPinOrException($pinNo)
+    public function isValidPinOrException(int $pinNo)
     {
         return in_array($pinNo, $this->pins) || in_array($pinNo, $this->hackablePins);
     }

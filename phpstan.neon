@@ -1,8 +1,5 @@
 parameters:
     universalObjectCratesClasses:
         - Zend\Stdlib\Parameters
-
-    ignoreErrors:
-        - '#Class Mosquitto\\Client constructor invoked with 0 parameters, 2 required.#'
     includes:
         - vendor/jangregor/phpstan-prophecy/src/extension.neon

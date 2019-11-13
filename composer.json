@@ -32,8 +32,13 @@
     "squizlabs/php_codesniffer": "3.*"
   },
   "autoload": {
-    "psr-0": {
-      "PhpGpio": "src/"
+    "psr-4": {
+      "PhpGpio\\": "src/PhpGpio/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PhpGpio\\Test\\": "tests/"
     }
   },
   "extra": {
