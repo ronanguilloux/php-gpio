@@ -10,48 +10,23 @@ namespace PhpGpio\Sensors;
  * such as digital thermometers and weather instruments.
  * (source : http://en.wikipedia.org/wiki/1-Wire)
  */
+
+use Exception;
+use InvalidArgumentException;
+
 class DS18B20 implements SensorInterface
 {
+    const BASEPATH = '/sys/bus/w1/devices/28-'; // ex: '/sys/bus/w1/devices/28-000003ced8f4/w1_slave'
 
-    private $bus = null; // ex: '/sys/bus/w1/devices/28-000003ced8f4/w1_slave'
-    const BASEPATH = '/sys/bus/w1/devices/28-';
-
-    /**
-     *  Get-Accesssor
-     */
-    public function getBus()
-    {
-        return $this->bus;
-    }
-
-    /**
-     *  Set-Accesssor
-     */
-    public function setBus($value)
-    {
-        // ? is a non empty string, & a valid file path
-        if (empty($value) || !is_string($value) || !file_exists($value)) {
-            throw new \InvalidArgumentException("$value is not a valid w1 bus path");
-        }
-
-        // ? is a regular w1-bus path on a Raspbery ?
-        if (!strstr($value, self::BASEPATH)) {
-            throw new \InvalidArgumentException("$value does not seem to be a regular w1 bus path");
-        }
-
-        $this->bus = $value;
-    }
+    /** @var string */
+    protected $bus;
 
     /**
      * Setup
-     *
-     * @return $this
      */
     public function __construct()
     {
         $this->bus = $this->guessBus();
-
-        return $this;
     }
 
     /**
@@ -62,44 +37,59 @@ class DS18B20 implements SensorInterface
      *
      * @return string $busPath
      */
-    public function guessBus()
+    public function guessBus(): string
     {
         $busFolders = glob(self::BASEPATH . '*'); // predictable path on a Raspberry Pi
-        if (0 === count($busFolders)) {
-            return false;
+        if ($busFolders === false || 0 === count($busFolders)) {
+            throw new Exception('No bus found');
         }
         $busPath = $busFolders[0]; // get the first thermal sensor found
 
         return $busPath . '/w1_slave';
     }
 
+    public function getBus(): string
+    {
+        return $this->bus;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBus(string $value)
+    {
+        // ? is a non empty string, & a valid file path
+        if (empty($value) || !is_string($value) || !file_exists($value)) {
+            throw new InvalidArgumentException("$value is not a valid w1 bus path");
+        }
+
+        // ? is a regular w1-bus path on a Raspbery ?
+        if (!strstr($value, self::BASEPATH)) {
+            throw new InvalidArgumentException("$value does not seem to be a regular w1 bus path");
+        }
+
+        $this->bus = $value;
+    }
+
     /**
      * Read
      *
-     * @param  array $args
+     * @param array $args
      * @return float $value
+     * @throws Exception
      */
-    public function read($args = array())
+    public function read($args = []): float
     {
         if (!is_string($this->bus) || !file_exists($this->bus)) {
-            throw new \Exception("No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result");
+            throw new Exception("No bus file found: please run sudo modprobe w1-gpio; sudo modprobe w1-therm & check the guessBus() method result");
         }
         $raw = file_get_contents($this->bus);
-        $raw = str_replace("\n", "", $raw);
-        $boom = explode('t=',$raw);
+        if ($raw === false) {
+            throw new Exception('Could not read bus');
+        }
+        $raw = str_replace("\n", '', $raw);
+        $boom = explode('t=', $raw);
 
-        return floatval($boom[1]/1000);
+        return floatval($boom[1] / 1000);
     }
-
-    /**
-     * Write
-     *
-     * @param array $args
-     * @return boolean
-     */
-    public function write($args = array())
-    {
-        return false;
-    }
-
 }

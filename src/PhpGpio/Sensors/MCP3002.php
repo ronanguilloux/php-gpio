@@ -2,18 +2,22 @@
 
 namespace PhpGpio\Sensors;
 
+use InvalidArgumentException;
+use PhpGpio\Gpio;
+
 /**
  * The MCP3002 has a 10-bit analog to digital converter (ADC) with a simple to use SPI interface.
  *
  * @author <paolo@casarini.org>
  */
-class MCP3002 implements SensorInterface {
+class MCP3002 implements SensorInterface
+{
 
     private $_clockpin;
     private $_mosipin;
     private $_misopin;
     private $_cspin;
-    
+
     private $_gpio;
 
     /**
@@ -29,9 +33,10 @@ class MCP3002 implements SensorInterface {
      * @param integer $misopin The Master In Slave Out (MISO) pin (ex. 9)
      * @param integer $cspin The Chip Select (CSna) pin (ex. 8)
      */
-    public function __construct($clockpin, $mosipin, $misopin, $cspin) {
-        $this->_gpio = new GPIO();
-        
+    public function __construct($clockpin, $mosipin, $misopin, $cspin)
+    {
+        $this->_gpio = new Gpio();
+
         $this->_clockpin = $clockpin;
         $this->_mosipin = $mosipin;
         $this->_misopin = $misopin;
@@ -48,20 +53,22 @@ class MCP3002 implements SensorInterface {
      * You should specify the channel (0|1) to read with the <tt>channel</tt> argument.
      *
      * @param array $args
-     * @return integer
+     * @return float
+     * @throws \Exception
      */
-    public function read($args = array()) {
+    public function read($args = []): float
+    {
         $channel = $args['channel'];
-        if (!is_integer($channel) || !in_array($channel, array(0, 1))) {
+        if (!is_integer($channel) || !in_array($channel, [0, 1])) {
             echo $msg = "Only 2 channels are available on a Mcp3002: 0 or 1";
-            throw new \InvalidArgumentException($msg);
+            throw new InvalidArgumentException($msg);
         }
-        
+
         // init comm
         $this->_gpio->output($this->_cspin, 1);
         $this->_gpio->output($this->_clockpin, 0);
         $this->_gpio->output($this->_cspin, 0);
-        
+
         // channel selection
         $cmdout = (6 + $channel) << 5;
         for ($i = 0; $i < 3; $i++) {
@@ -74,7 +81,7 @@ class MCP3002 implements SensorInterface {
             $this->_gpio->output($this->_clockpin, 1);
             $this->_gpio->output($this->_clockpin, 0);
         }
-        
+
         $adcout = 0;
         //  read in one empty bit, one null bit and 10 ADC bits
         for ($i = 0; $i < 12; $i++) {
@@ -85,12 +92,13 @@ class MCP3002 implements SensorInterface {
                 $adcout |= 0x1;
             }
         }
-    
+
         $this->_gpio->output($this->_cspin, 1);
         return $adcout >> 1;
     }
-    
-    public function write($args = array()) {
+
+    public function write($args = [])
+    {
         return false;
     }
 }

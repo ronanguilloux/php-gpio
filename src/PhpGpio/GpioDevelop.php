@@ -13,12 +13,12 @@ class GpioDevelop implements GpioInterface
     /**
      * @var array
      */
-    public $pins = array(14, 15, 17, 18);
+    public $pins = [14, 15, 17, 18];
 
     /**
      * @var array
      */
-    public $hackablePins = array(17, 18);
+    public $hackablePins = [17, 18];
 
     /**
      * @var int
@@ -36,7 +36,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return array
      */
-    public function getHackablePins()
+    public function getHackablePins(): array
     {
         return $this->hackablePins;
     }
@@ -44,12 +44,12 @@ class GpioDevelop implements GpioInterface
     /**
      * Setup pin, takes pin number and direction (in or out)
      *
-     * @param  int    $pinNo
-     * @param  string $direction
+     * @param int $pinNo
+     * @param string $direction
      *
      * @return GpioDevelop or boolean false
      */
-    public function setup($pinNo, $direction)
+    public function setup(int $pinNo, string $direction)
     {
         return $this;
     }
@@ -57,24 +57,24 @@ class GpioDevelop implements GpioInterface
     /**
      * Get input value
      *
-     * @param  int   $pinNo
+     * @param int $pinNo
      *
-     * @return int GPIO value or boolean false
+     * @return string GPIO value or boolean false
      */
-    public function input($pinNo)
+    public function input(int $pinNo): string
     {
-        return $this->inputValue;
+        return (string)$this->inputValue;
     }
 
     /**
      * Set output value
      *
-     * @param  int    $pinNo
-     * @param  string $value
+     * @param int $pinNo
+     * @param string $output
      *
      * @return GpioDevelop or boolean false
      */
-    public function output($pinNo, $value)
+    public function output(int $pinNo, string $output)
     {
         return $this;
     }
@@ -82,11 +82,11 @@ class GpioDevelop implements GpioInterface
     /**
      * Unexport Pin
      *
-     * @param  int $pinNo
+     * @param int $pinNo
      *
      * @return GpioDevelop or boolean false
      */
-    public function unexport($pinNo)
+    public function unexport(int $pinNo)
     {
         return $this;
     }
@@ -108,7 +108,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return boolean
      */
-    public function isExported($pinNo)
+    public function isExported(int $pinNo)
     {
         return in_array($pinNo, $this->pins) || in_array($pinNo, $this->hackablePins);
     }
@@ -120,7 +120,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return string pin's direction value or boolean false
      */
-    public function currentDirection($pinNo)
+    public function currentDirection(int $pinNo)
     {
         return $this->direction;
     }
@@ -132,7 +132,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return boolean
      */
-    public function isValidDirection($direction)
+    public function isValidDirection(string $direction)
     {
         return $direction == GpioInterface::DIRECTION_IN || $direction == GpioInterface::DIRECTION_OUT;
     }
@@ -144,7 +144,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return boolean
      */
-    public function isValidOutput($output)
+    public function isValidOutputOrException(string $output)
     {
         return $output == GpioInterface::IO_VALUE_ON || $output == GpioInterface::IO_VALUE_OFF;
     }
@@ -156,7 +156,7 @@ class GpioDevelop implements GpioInterface
      *
      * @return boolean
      */
-    public function isValidPin($pinNo)
+    public function isValidPinOrException($pinNo)
     {
         return in_array($pinNo, $this->pins) || in_array($pinNo, $this->hackablePins);
     }
